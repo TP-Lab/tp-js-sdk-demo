@@ -85,7 +85,17 @@
       </div>
     </div>
     <div class="item">
-      <h3>8. tp.getEosBalance</h3>
+      <h3>8. tp.getTableRows</h3>
+      <div class="demo-content">
+        <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="tableRows"></textarea><br>
+        <button @click="getTableRows">getTableRows</button>
+        <div class="getTableRowsLog">
+
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <h3>9. tp.getEosBalance</h3>
       <div class="demo-content">
         <button @click="getEosBalance">getEosBalance</button>
         <div class="getEosBalanceLog">
@@ -94,7 +104,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>9. tp.getEosAccountInfo</h3>
+      <h3>10. tp.getEosAccountInfo</h3>
       <div class="demo-content">
         <button @click="getEosAccountInfo">getEosAccountInfo</button>
         <div class="getEosAccountInfoLog">
@@ -103,7 +113,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>10. tp.moacTokenTransfer</h3>
+      <h3>11. tp.moacTokenTransfer</h3>
       <div class="demo-content">
         <p>from：<input v-model="fromMoac" type="text"> </p>
         <p>to: <input v-model="toMoac"  type="text" ></p> 
@@ -120,7 +130,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>11. tp.makeTransaction (Deprecated)</h3>
+      <h3>12. tp.makeTransaction (Deprecated)</h3>
       <div class="demo-content">
         <!-- <button @click="makeTransaction">makeTransaction</button> -->
         <div class="makeTransactionLog">
@@ -129,7 +139,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>12. tp.signTransaction(Deprecated)</h3>
+      <h3>13. tp.signTransaction(Deprecated)</h3>
       <div class="demo-content">
         <!-- <button @click="signTransaction">signTransaction</button> -->
         <div class="signTransactionLog">
@@ -162,6 +172,7 @@ export default {
       tokenNameMoac: '',
       decimalMoac: '',
       gasLimitMoac: '',
+      tableRows: '{"json": true, "code": "theeosbutton", "scope": "theeosbutton","table": "accstates","lower_bound": "10", "limit": 30}',
       actionsEos: '{"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","to":"itokenpocket","quantity":"0.0001 EOS","memo":"test sdk"}},{"account":"eosio","name":"delegatebw","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","receiver":"itokenpocket","stake_net_quantity":"0.0100 EOS","stake_cpu_quantity":"0.0100 EOS","transfer":0}}]}'
     }
   },
@@ -231,6 +242,18 @@ export default {
         console.log(e);
       }
       
+    },
+    getTableRows() {
+      try {
+        var params = JSON.parse(this.tableRows);
+
+        tp.getTableRows(params).then(data => {
+          $('.getTableRowsLog').append(JSON.stringify(data));
+        });
+      }
+      catch(e) {
+        console.log(e);
+      }
     },
     getEosBalance() {
       var params = {
@@ -307,5 +330,10 @@ button {
 }
 div, p {
   word-break: break-all;
+}
+
+.item {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 20px 10px;
 }
 </style>
