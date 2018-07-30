@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>1. tp.getAppInfo</h3>
+      <h3>1.1 tp.getAppInfo</h3>
       <div class="demo-content">
         <button @click="getAppInfo">getAppInfo</button>
         <div class="getAppInfoLog">
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>2. tp.getWalletList</h3>
+      <h3>1.2 tp.getWalletList</h3>
       <div class="demo-content">
         <button @click="getWalletList('eth')">getWalletList(eth)</button>
         <button @click="getWalletList('moac')">getWalletList(moac)</button>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>3. tp.getDeviceId</h3>
+      <h3>1.3 tp.getDeviceId</h3>
       <div class="demo-content">
         <button @click="getDeviceId">getDeviceId</button>
         <div class="getDeviceIdLog">
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>4. tp.shareNewsToSNS</h3>
+      <h3>1.4 tp.shareNewsToSNS</h3>
       <div class="demo-content">
         <button @click="shareNewsToSNS">shareNewsToSNS</button>
         <div class="shareNewsToSNSLog">
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>5. tp.invokeQRScanner</h3>
+      <h3>1.5 tp.invokeQRScanner</h3>
       <div class="demo-content">
         <button @click="invokeQRScanner">invokeQRScanner</button>
         <div class="invokeQRScannerLog">
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>6. tp.eosTokenTransfer</h3>
+      <h3>2.1 tp.eosTokenTransfer</h3>
       <div class="demo-content">
         <p>from：<input v-model="fromEos" type="text"> </p>
         <p>to: <input v-model="toEos"  type="text" ></p> 
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>7. tp.pushEosAction</h3>
+      <h3>2.2 tp.pushEosAction</h3>
       <div class="demo-content">
         Change the 'from' and 'to' fields into your custom account at least.
         <textarea style="width:100%" id="push-actions" col="30" rows="10" v-model="actionsEos"></textarea><br>
@@ -85,17 +85,25 @@
       </div>
     </div>
     <div class="item">
-      <h3>8. tp.getTableRows</h3>
+      <h3>2.3 tp.getTableRows</h3>
       <div class="demo-content">
         <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="tableRows"></textarea><br>
         <button @click="getTableRows">getTableRows</button>
         <div class="getTableRowsLog">
-
         </div>
       </div>
     </div>
+    <!-- <div class="item">
+      <h3>2.4 tp.getEosTransactionRecord</h3>
+      <div class="demo-content">
+        <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="transactionParams"></textarea><br>
+        <button @click="getEosTransactionRecord">getEosTransactionRecord</button>
+        <div class="getEosTransactionRecordLog">
+        </div>
+      </div>
+    </div> -->
     <div class="item">
-      <h3>9. tp.getEosBalance</h3>
+      <h3>2.4 tp.getEosBalance</h3>
       <div class="demo-content">
         <button @click="getEosBalance">getEosBalance</button>
         <div class="getEosBalanceLog">
@@ -103,17 +111,17 @@
         </div>
       </div>
     </div>
-    <div class="item">
-      <h3>10. tp.getEosAccountInfo</h3>
+    <!-- <div class="item">
+      <h3>2.6 tp.getEosAccountInfo</h3>
       <div class="demo-content">
         <button @click="getEosAccountInfo">getEosAccountInfo</button>
         <div class="getEosAccountInfoLog">
 
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="item">
-      <h3>11. tp.moacTokenTransfer</h3>
+      <h3>3.1 tp.moacTokenTransfer</h3>
       <div class="demo-content">
         <p>from：<input v-model="fromMoac" type="text"> </p>
         <p>to: <input v-model="toMoac"  type="text" ></p> 
@@ -130,7 +138,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>12. tp.makeTransaction (Deprecated)</h3>
+      <h3>3.2 tp.makeTransaction (Deprecated)</h3>
       <div class="demo-content">
         <!-- <button @click="makeTransaction">makeTransaction</button> -->
         <div class="makeTransactionLog">
@@ -139,7 +147,7 @@
       </div>
     </div>
     <div class="item">
-      <h3>13. tp.signTransaction(Deprecated)</h3>
+      <h3>3.3 tp.signTransaction(Deprecated)</h3>
       <div class="demo-content">
         <!-- <button @click="signTransaction">signTransaction</button> -->
         <div class="signTransactionLog">
@@ -172,6 +180,7 @@ export default {
       tokenNameMoac: '',
       decimalMoac: '',
       gasLimitMoac: '',
+      transactionParams: '{"page": 2, "account": "itokenpocket", "count": 20, "token": "EOS", "sort": "desc", "contract": "eosio.token"}',
       tableRows: '{"json": true, "code": "theeosbutton", "scope": "theeosbutton","table": "accstates","lower_bound": "10", "limit": 30}',
       actionsEos: '{"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","to":"itokenpocket","quantity":"0.0001 EOS","memo":"test sdk"}},{"account":"eosio","name":"delegatebw","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","receiver":"itokenpocket","stake_net_quantity":"0.0100 EOS","stake_cpu_quantity":"0.0100 EOS","transfer":0}}]}'
     }
@@ -249,6 +258,18 @@ export default {
 
         tp.getTableRows(params).then(data => {
           $('.getTableRowsLog').append(JSON.stringify(data));
+        });
+      }
+      catch(e) {
+        console.log(e);
+      }
+    },
+    getEosTransactionRecord() {
+      try {
+        var params = JSON.parse(this.transactionParams);
+
+        tp.getEosTransactionRecord(params).then(data => {
+          $('.getEosTransactionRecordLog').append(JSON.stringify(data));
         });
       }
       catch(e) {
