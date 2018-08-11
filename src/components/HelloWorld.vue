@@ -93,15 +93,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="item">
-      <h3>2.4 tp.getEosTransactionRecord</h3>
-      <div class="demo-content">
-        <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="transactionParams"></textarea><br>
-        <button @click="getEosTransactionRecord">getEosTransactionRecord</button>
-        <div class="getEosTransactionRecordLog">
-        </div>
-      </div>
-    </div> -->
+    
     <div class="item">
       <h3>2.4 tp.getEosBalance</h3>
       <div class="demo-content">
@@ -112,14 +104,23 @@
       </div>
     </div>
     <!-- <div class="item">
-      <h3>2.6 tp.getEosAccountInfo</h3>
+      <h3>2.5 tp.getEosTransactionRecord (ios 0.37+ , android 0.42+)</h3>
+      <div class="demo-content">
+        <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="transactionParams"></textarea><br>
+        <button @click="getEosTransactionRecord">getEosTransactionRecord</button>
+        <div class="getEosTransactionRecordLog">
+        </div>
+      </div>
+    </div> -->
+    <div class="item">
+      <h3>2.6 tp.getEosAccountInfo (ios 0.37+ , android 0.42+)</h3>
       <div class="demo-content">
         <button @click="getEosAccountInfo">getEosAccountInfo</button>
         <div class="getEosAccountInfoLog">
 
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="item">
       <h3>3.1 tp.moacTokenTransfer</h3>
       <div class="demo-content">
