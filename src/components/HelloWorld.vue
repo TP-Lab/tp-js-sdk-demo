@@ -70,6 +70,8 @@
     <div class="item">
       <h3>1.7 tp.getWallets</h3>
       <div class="demo-content">
+        
+        <textarea style="width:100%" id="push-actions" col="30" rows="2" v-model="getWalletsParams"></textarea><br>
         <button @click="getWallets">getWallets</button>
         <div class="getWalletsLog">
 
@@ -86,6 +88,42 @@
         </div>
       </div>
     </div>
+    <div>
+      
+      <h3>1.9 tp.eosAuthSign</h3>
+      <div class="demo-content">
+        <textarea style="width:100%" id="push-actions" col="30" rows="2" v-model="eosAuthSignParams"></textarea><br>
+        <button @click="eosAuthSign">eosAuthSign</button>
+        <div class="eosAuthSignLog">
+
+        </div>
+      </div>
+    </div>
+    <div>
+      
+      <h3>1.10 tp.back</h3>
+      <div class="demo-content">
+        <button @click="gotoBack">下一个页面</button>
+      
+      </div>
+    </div>
+     <div>
+      
+      <h3>1.11 tp.fullScreen</h3>
+      <div class="demo-content">
+        <button @click="fullScreen(1)">全屏</button>
+        <button @click="fullScreen(0)">取消全屏</button>
+   
+      </div>
+    </div>
+    <div>
+      
+      <h3>1.12 tp.close</h3>
+      <div class="demo-content">
+        <button @click="close">关闭</button>
+      </div>
+    </div>
+  
     <div class="item">
       <h3>2.1 tp.eosTokenTransfer</h3>
       <div class="demo-content">
@@ -270,6 +308,7 @@ export default {
       amountEos: '',
       contractEos: '',
       tokenNameEos: '',
+      addressEos: '',
       precisionEos: '',
       memoEos: '',
       fromEnu: '',
@@ -277,6 +316,7 @@ export default {
       amountEnu: '',
       contractEnu: '',
       tokenNameEnu: '',
+      addressEnu: '',
       precisionEnu: '',
       memoEnu: '',
       fromMoac: '',
@@ -286,7 +326,9 @@ export default {
       tokenNameMoac: '',
       decimalMoac: '',
       gasLimitMoac: '',
+      getWalletsParams: '{"permission": "active", "blockchain": "eos"}',
       appidParams: '{"appid": "s9QY7ZYad6Xm"}',
+      eosAuthSignParams: '{"from": "itokenpocket", "publicKey": "abc", "signdata": "abc"}',
       eosTransactionParams: '{"start": 2, "account": "itokenpocket", "count": 20, "token": "EOS", "sort": "desc", "contract": "eosio.token"}',
       eosTableRows: '{"json": true, "code": "theeosbutton", "scope": "theeosbutton","table": "accstates","lower_bound": "10", "limit": 30}',
       actionsEos: '{"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","to":"itokenpocket","quantity":"0.0001 EOS","memo":"test sdk"}},{"account":"eosio","name":"delegatebw","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","receiver":"itokenpocket","stake_net_quantity":"0.0100 EOS","stake_cpu_quantity":"0.0100 EOS","transfer":0}}],"account": "itokenpocket", "address": "EOS7ds9A9FGDsKrdymQ4ynKbMgbCVUdBsosEpsLTqvg6icyBMcQUm"}',
@@ -320,7 +362,10 @@ export default {
       })
     },
     getWallets() {
-      tp.getWallets().then(data => {
+      var params = JSON.parse(this.getWalletsParams);
+      $('.getWalletsLog').append(JSON.stringify(params));
+      
+      tp.getWallets(params).then(data => {
         $('.getWalletsLog').append(JSON.stringify(data));
       })
     },
@@ -349,6 +394,22 @@ export default {
       $('.signLog').append(JSON.stringify(params));
       tp.sign(params).then(data => {
         $('.signLog').append(JSON.stringify(data));
+      })
+    },
+    fullScreen(num) {
+      tp.fullScreen({fullScreen: +num});
+    },
+    gotoBack() {
+      this.$router.push('/back');
+    },
+    close() {
+      tp.close();
+    },
+    eosAuthSign() {
+      var params = JSON.parse(this.eosAuthSignParams);
+      $('.eosAuthSignLog').append(JSON.stringify(params));
+      tp.eosAuthSign(params).then(data => {
+        $('.eosAuthSignLog').append(JSON.stringify(data));
       })
     },
     eosTokenTransfer() {
@@ -404,6 +465,7 @@ export default {
         console.log(e);
       }
     },
+   
     getEosBalance() {
       var params = {
         account: 'itokenpocket',
@@ -424,6 +486,7 @@ export default {
         $('.getEosAccountInfoLog').append(JSON.stringify(data));
       })
     },
+
 
     // enu
     enuTokenTransfer() {
