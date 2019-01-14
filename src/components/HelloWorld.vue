@@ -114,6 +114,13 @@
         <button @click="importWallet('moac')">导入MOAC钱包</button>
       </div>
     </div>
+    <div>
+      <h3>1.13 tp.setMenubar</h3>
+      <div class="demo-content">
+        <button @click="setMenubar(1)">关闭</button>
+        <button @click="setMenubar(0)">显示</button>
+      </div>
+    </div>
 
     <div class="item">
       <h3>2.1 tp.eosTokenTransfer</h3>
@@ -484,6 +491,9 @@ export default {
     },
     close() {
       tp.close();
+    },
+    setMenubar(flag) {
+      tp.setMenubar({ flag: flag });
     },
     eosAuthSign() {
       var params = JSON.parse(this.eosAuthSignParams);
