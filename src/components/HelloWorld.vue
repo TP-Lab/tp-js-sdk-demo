@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>tp-js-sdk-demo v2</h1>
+
     <div class="item">
       <h3>0. tp.isConnected</h3>
       <div class="demo-content">
@@ -119,6 +120,20 @@
       <div class="demo-content">
         <button @click="setMenubar(1)">关闭</button>
         <button @click="setMenubar(0)">显示</button>
+      </div>
+    </div>
+
+    <div>
+      <h3>1.14 tp.startChat</h3>
+      <div class="demo-content">
+        blockChainId:
+        <input type="text" v-model="chatblockChainId">
+        <br>account:
+        <input type="text" v-model="chataccount">
+        <br>sessionType:
+        <input type="text" v-model="chatsessionType">
+        <br>
+        <button @click="startChat">startChat</button>
       </div>
     </div>
 
@@ -403,6 +418,9 @@ export default {
       contractMoac: "",
       tokenNameMoac: "MOAC",
       decimalMoac: "18",
+      chatblockChainId: "",
+      chataccount: "",
+      chatsessionType: "1",
       gasLimitMoac: "21000",
       getWalletsParams: '{"permission": "active", "blockchain": "eos"}',
       appidParams: '{"appid": "s9QY7ZYad6Xm"}',
@@ -659,6 +677,15 @@ export default {
       tp.moacTokenTransfer(params).then(data => {
         $(".moacTokenTransferLog").append(JSON.stringify(data));
       });
+    },
+    startChat() {
+      var params = {
+        blockChainId: this.chatblockChainId,
+        account: this.chataccount,
+        sessionType: this.chatsessionType
+      };
+
+      tp.startChat(params);
     },
     pushMoacTransaction() {
       var params = {
