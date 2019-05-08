@@ -96,35 +96,35 @@
     <div>
       <h3>1.11 tp.fullScreen</h3>
       <div class="demo-content">
-        <button @click="fullScreen(1)">全屏</button>
-        <button @click="fullScreen(0)">取消全屏</button>
+        <button @click="fullScreen(1)">全屏 fullScreen</button>
+        <button @click="fullScreen(0)">取消全屏 cancel</button>
       </div>
     </div>
     <div>
       <h3>1.12 tp.close</h3>
       <div class="demo-content">
-        <button @click="close">关闭</button>
+        <button @click="close">close</button>
       </div>
     </div>
     <div>
       <h3>1.13 tp.importWallet</h3>
       <div class="demo-content">
-        <button @click="importWallet('eos')">导入EOS钱包</button>
-        <button @click="importWallet('eth')">导入ETH钱包</button>
-        <button @click="importWallet('enu')">导入ENU钱包</button>
-        <button @click="importWallet('moac')">导入MOAC钱包</button>
+        <button @click="importWallet('eos')">import EOS wallet</button>
+        <button @click="importWallet('eth')">import ETH wallet</button>
+        <button @click="importWallet('enu')">import ENU wallet</button>
+        <button @click="importWallet('moac')">import MOAC wallet</button>
       </div>
     </div>
     <div>
-      <h3>1.13 tp.setMenubar</h3>
+      <h3>1.14 tp.setMenubar</h3>
       <div class="demo-content">
-        <button @click="setMenubar(1)">关闭</button>
-        <button @click="setMenubar(0)">显示</button>
+        <button @click="setMenubar(1)">close</button>
+        <button @click="setMenubar(0)">show</button>
       </div>
     </div>
 
     <div>
-      <h3>1.14 tp.startChat</h3>
+      <h3>1.15 tp.startChat</h3>
       <div class="demo-content">
         blockChainId:
         <input type="text" v-model="chatblockChainId">
@@ -134,6 +134,42 @@
         <input type="text" v-model="chatsessionType">
         <br>
         <button @click="startChat">startChat</button>
+      </div>
+    </div>
+
+    <div>
+      <h3>1.16 tp.saveImage</h3>
+      <div class="demo-content">
+        imagerURL:
+        <input type="text" v-model="imageURL">
+        <br>
+        <button @click="saveImage">saveImage</button>
+      </div>
+    </div>
+    <div>
+      <h3>1.17 tp.rollHorizontal</h3>
+      <div class="demo-content">
+        <button @click="rollHorizontal(true)">true</button>
+        <br>
+        <button @click="rollHorizontal(false)">false</button>
+      </div>
+    </div>
+
+    <div>
+      <h3>1.18 tp.popGestureRecognizerEnable</h3>
+      <div class="demo-content">
+        <button @click="popGestureRecognizerEnable(true)">true</button>
+        <br>
+        <button @click="popGestureRecognizerEnable(false)">false</button>
+      </div>
+    </div>
+
+    <div>
+      <h3>1.19 tp.forwardNavigationGesturesEnable</h3>
+      <div class="demo-content">
+        <button @click="forwardNavigationGesturesEnable(true)">true</button>
+        <br>
+        <button @click="forwardNavigationGesturesEnable(false)">false</button>
       </div>
     </div>
 
@@ -422,6 +458,8 @@ export default {
       chataccount: "",
       chatsessionType: "1",
       gasLimitMoac: "21000",
+      imageURL:
+        "https://gz.bcebos.com/v1/tokenpocket/token-logo/EOS_slamdevelops_SLAM.png",
       getWalletsParams: '{"permission": "active", "blockchain": "eos"}',
       appidParams: '{"appid": "s9QY7ZYad6Xm"}',
       eosAuthSignParams:
@@ -641,6 +679,15 @@ export default {
         console.log(e);
       }
     },
+    rollHorizontal(isTrue) {
+      var params = { horizontal: isTrue };
+
+      tp.rollHorizontal(params);
+    },
+    saveImage() {
+      var params = { url: this.imageURL };
+      tp.saveImage(params);
+    },
     getEnuBalance() {
       var params = {
         account: "accommodated",
@@ -677,6 +724,12 @@ export default {
       tp.moacTokenTransfer(params).then(data => {
         $(".moacTokenTransferLog").append(JSON.stringify(data));
       });
+    },
+    popGestureRecognizerEnable(isEnable) {
+      tp.popGestureRecognizerEnable({ enable: isEnable });
+    },
+    forwardNavigationGesturesEnable(isEnable) {
+      tp.forwardNavigationGesturesEnable({ enable: isEnable });
     },
     startChat() {
       var params = {
