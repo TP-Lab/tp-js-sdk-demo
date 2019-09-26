@@ -10,7 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "tp-js-sdk": "^3.1.1",
+    "jquery": "^3.4.1",
+    "tp-js-sdk": "^3.3.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

@@ -58,7 +58,7 @@
       <h3>1.7 tp.getWallets</h3>
       <div class="demo-content">
         <textarea style="width:100%" id="push-actions" col="30" rows="2" v-model="getWalletsParams"></textarea>
-        <br>
+        <br />
         <button @click="getWallets">getWallets</button>
         <div class="getWalletsLog"></div>
       </div>
@@ -67,7 +67,7 @@
       <h3>1.8 tp.sign</h3>
       <div class="demo-content">
         <textarea style="width:100%" id="push-actions" col="30" rows="2" v-model="appidParams"></textarea>
-        <br>
+        <br />
         <button @click="sign">sign</button>
         <div class="signLog"></div>
       </div>
@@ -82,7 +82,7 @@
           rows="2"
           v-model="eosAuthSignParams"
         ></textarea>
-        <br>
+        <br />
         <button @click="eosAuthSign">eosAuthSign</button>
         <div class="eosAuthSignLog"></div>
       </div>
@@ -127,12 +127,12 @@
       <h3>1.15 tp.startChat</h3>
       <div class="demo-content">
         blockChainId:
-        <input type="text" v-model="chatblockChainId">
-        <br>account:
-        <input type="text" v-model="chataccount">
-        <br>sessionType:
-        <input type="text" v-model="chatsessionType">
-        <br>
+        <input type="text" v-model="chatblockChainId" />
+        <br />account:
+        <input type="text" v-model="chataccount" />
+        <br />sessionType:
+        <input type="text" v-model="chatsessionType" />
+        <br />
         <button @click="startChat">startChat</button>
       </div>
     </div>
@@ -141,8 +141,8 @@
       <h3>1.16 tp.saveImage</h3>
       <div class="demo-content">
         imagerURL:
-        <input type="text" v-model="imageURL">
-        <br>
+        <input type="text" v-model="imageURL" />
+        <br />
         <button @click="saveImage">saveImage</button>
       </div>
     </div>
@@ -150,7 +150,7 @@
       <h3>1.17 tp.rollHorizontal</h3>
       <div class="demo-content">
         <button @click="rollHorizontal(true)">true</button>
-        <br>
+        <br />
         <button @click="rollHorizontal(false)">false</button>
       </div>
     </div>
@@ -159,7 +159,7 @@
       <h3>1.18 tp.popGestureRecognizerEnable</h3>
       <div class="demo-content">
         <button @click="popGestureRecognizerEnable(true)">true</button>
-        <br>
+        <br />
         <button @click="popGestureRecognizerEnable(false)">false</button>
       </div>
     </div>
@@ -168,45 +168,65 @@
       <h3>1.19 tp.forwardNavigationGesturesEnable</h3>
       <div class="demo-content">
         <button @click="forwardNavigationGesturesEnable(true)">true</button>
-        <br>
+        <br />
         <button @click="forwardNavigationGesturesEnable(false)">false</button>
       </div>
     </div>
+
+    <!-- <div>
+      <h3>1.20 tp.addAccountByPhoneOrEmail</h3>
+      <div class="demo-content">
+        blockchainid:
+        <input type="text" v-model="accountBlockChainId" />
+        <br />类型：
+        <input type="radio" name="register" value="register" /> 注册
+        <input type="radio" name="register" value="import" checked /> 导入
+        <br />方式：
+        <input type="radio" name="addType" value="phone" checked /> 手机
+        <input type="radio" name="addType" value="email" /> 邮箱
+        <br />手机地区码(选填)
+        <input type="text" v-model="areaCode" />
+        <br />手机号或邮箱
+        <input type="text" v-model="mailOrPhone" />
+        <br />
+        <button @click="addAccountByPhoneOrEmail()">导入/创建</button>
+      </div>
+    </div>-->
 
     <div class="item">
       <h3>2.1 tp.eosTokenTransfer</h3>
       <div class="demo-content">
         <p>
           from：
-          <input v-model="fromEos" type="text">
+          <input v-model="fromEos" type="text" />
         </p>
         <p>
           to:
-          <input v-model="toEos" type="text">
+          <input v-model="toEos" type="text" />
         </p>
         <p>
           amount:
-          <input v-model="amountEos" type="text">
+          <input v-model="amountEos" type="text" />
         </p>
         <p>
           Token:
-          <input v-model="tokenNameEos" type="text">
+          <input v-model="tokenNameEos" type="text" />
         </p>
         <p>
           Contract:
-          <input v-model="contractEos" type="text">
+          <input v-model="contractEos" type="text" />
         </p>
         <p>
           precision:
-          <input type="text" v-model="precisionEos">
+          <input type="text" v-model="precisionEos" />
         </p>
         <p>
           memo:
-          <input v-model="memoEos" type="text">
+          <input v-model="memoEos" type="text" />
         </p>
         <p>
           address:
-          <input v-model="addressEos" type="text">
+          <input v-model="addressEos" type="text" />
         </p>
         <button @click="eosTokenTransfer">eosTokenTransfer</button>
         <div class="eosTokenTransferLog"></div>
@@ -223,7 +243,7 @@
           rows="10"
           v-model="actionsEos"
         ></textarea>
-        <br>
+        <br />
         <button @click="pushEosAction">pushEosAction</button>
         <div class="pushEosActionLog"></div>
       </div>
@@ -232,7 +252,7 @@
       <h3>2.3 tp.getTableRows</h3>
       <div class="demo-content">
         <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="eosTableRows"></textarea>
-        <br>
+        <br />
         <button @click="getTableRows">getTableRows</button>
         <div class="getTableRowsLog"></div>
       </div>
@@ -255,7 +275,7 @@
           rows="5"
           v-model="eosTransactionParams"
         ></textarea>
-        <br>
+        <br />
         <button @click="getEosTransactionRecord">getEosTransactionRecord</button>
         <div class="getEosTransactionRecordLog"></div>
       </div>
@@ -272,31 +292,31 @@
       <div class="demo-content">
         <p>
           from：
-          <input v-model="fromMoac" type="text">
+          <input v-model="fromMoac" type="text" />
         </p>
         <p>
           to:
-          <input v-model="toMoac" type="text">
+          <input v-model="toMoac" type="text" />
         </p>
         <p>
           amount:
-          <input v-model="amountMoac" type="text">
+          <input v-model="amountMoac" type="text" />
         </p>
         <p>
           tokenName:
-          <input v-model="tokenNameMoac" type="text">
+          <input v-model="tokenNameMoac" type="text" />
         </p>
         <p>
           Contract:
-          <input v-model="contractMoac" type="text">
+          <input v-model="contractMoac" type="text" />
         </p>
         <p>
           decimal:
-          <input type="text" v-model="decimalMoac">
+          <input type="text" v-model="decimalMoac" />
         </p>
         <p>
           gasLimit:
-          <input v-model="gasLimitMoac" type="text">
+          <input v-model="gasLimitMoac" type="text" />
         </p>
 
         <button @click="moacTokenTransfer">moacTokenTransfer</button>
@@ -332,35 +352,35 @@
       <div class="demo-content">
         <p>
           from：
-          <input v-model="fromEnu" type="text">
+          <input v-model="fromEnu" type="text" />
         </p>
         <p>
           to:
-          <input v-model="toEnu" type="text">
+          <input v-model="toEnu" type="text" />
         </p>
         <p>
           amount:
-          <input v-model="amountEnu" type="text">
+          <input v-model="amountEnu" type="text" />
         </p>
         <p>
           Token:
-          <input v-model="tokenNameEnu" type="text">
+          <input v-model="tokenNameEnu" type="text" />
         </p>
         <p>
           Contract:
-          <input v-model="contractEnu" type="text">
+          <input v-model="contractEnu" type="text" />
         </p>
         <p>
           precision:
-          <input type="text" v-model="precisionEnu">
+          <input type="text" v-model="precisionEnu" />
         </p>
         <p>
           memo:
-          <input v-model="memoEnu" type="text">
+          <input v-model="memoEnu" type="text" />
         </p>
         <p>
           address:
-          <input v-model="addressEnu" type="text">
+          <input v-model="addressEnu" type="text" />
         </p>
         <button @click="enuTokenTransfer">enuTokenTransfer</button>
         <div class="enuTokenTransferLog"></div>
@@ -377,7 +397,7 @@
           rows="10"
           v-model="actionsEnu"
         ></textarea>
-        <br>
+        <br />
         <button @click="pushEnuAction">pushEnuAction</button>
         <div class="pushEnuActionLog"></div>
       </div>
@@ -386,7 +406,7 @@
       <h3>4.3 tp.getEnuTableRows</h3>
       <div class="demo-content">
         <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="enuTableRows"></textarea>
-        <br>
+        <br />
         <button @click="getEnuTableRows">getEnuTableRows</button>
         <div class="getEnuTableRowsLog"></div>
       </div>
@@ -409,7 +429,7 @@
           rows="5"
           v-model="enuTransactionParams"
         ></textarea>
-        <br>
+        <br />
         <button @click="getEnuTransactionRecord">getEnuTransactionRecord</button>
         <div class="getEnuTransactionRecordLog"></div>
       </div>
@@ -421,6 +441,38 @@
         <div class="getEnuAccountInfoLog"></div>
       </div>
     </div>
+    <div class="item">
+      <h3>5.1 tp.signCosmosTransaction</h3>
+      <div class="demo-content">
+        <textarea style="width:100%" id="cosmos-actions" col="30" rows="5" v-model="cosmosParams"></textarea>
+        <br />
+        <button @click="signCosmosTransaction">signCosmosTransaction</button>
+        <div class="signCosmosTransactionLog"></div>
+      </div>
+    </div>
+    <div class="item">
+      <h3>5.2 tp.cosmosArbitrarySignature</h3>
+      <div class="demo-content">
+        cosmos 账号：
+        <input type="text" v-model="cosmosAddress" />
+        <textarea style="width:100%" id="cosmos-actions" col="30" rows="5" v-model="cosmosParams"></textarea>
+        <br />
+        <button @click="cosmosArbitrarySignature">cosmosArbitrarySignature</button>
+        <div class="cosmosArbitrarySignatureLog"></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>9.1 tp.signJingtumTransaction</h3>
+      <div class="demo-content">
+        <textarea style="width:100%" id="jingtum-tx" col="30" rows="5" v-model="jingtumParams"></textarea>
+        <br />
+        <button @click="signJingtumTransaction">signJingtumTransaction</button>
+        <div class="signJingtumTransactionLog"></div>
+      </div>
+    </div>
+
+    <div></div>
   </div>
 </template>
 
@@ -458,6 +510,12 @@ export default {
       chataccount: "",
       chatsessionType: "1",
       gasLimitMoac: "21000",
+      accountBlockChainId: "4",
+      mailOrPhone: "",
+      areaCode: "",
+      cosmosAddress: "",
+      cosmosParams:
+        '{"from":"cosmos1njg8uq4ek9y9fvgw59t8qdtrka8tz0aef5gnk4","chain_id":"cosmoshub-2","account_number":1756,"sequence":3,"fees":{"denom":"uatom","amount":500},"gas":20000,"memo":"","type":"transfer","msg":{"to":"cosmos1njg8uq4ek9y9fvgw59t8qdtrka8tz0aef5gnk4","coins":[{"denom":"uatom","amount":100000}]}}',
       imageURL:
         "https://gz.bcebos.com/v1/tokenpocket/token-logo/EOS_slamdevelops_SLAM.png",
       getWalletsParams: '{"permission": "active", "blockchain": "eos"}',
@@ -472,6 +530,8 @@ export default {
         '{"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","to":"itokenpocket","quantity":"0.0001 EOS","memo":"test sdk"}},{"account":"eosio","name":"delegatebw","authorization":[{"actor":"itokenpocket","permission":"active"}],"data":{"from":"itokenpocket","receiver":"itokenpocket","stake_net_quantity":"0.0100 EOS","stake_cpu_quantity":"0.0100 EOS","transfer":0}}],"account": "itokenpocket", "address": "EOS7ds9A9FGDsKrdymQ4ynKbMgbCVUdBsosEpsLTqvg6icyBMcQUm"}',
       enuTransactionParams:
         '{"start": 2, "account": "accommodated", "count": 20, "token": "ENU", "sort": "desc", "contract": "enu.token"}',
+      jingtumParams:
+        '{"Account":"j47J1UriYYcZ36aTJsEXmFhLxxxxxxx","Fee":0.00001,"Flags":0,"OfferSequence":4334,"Sequence":4353,"TransactionType":"OfferCancel"}',
       enuTableRows:
         '{"json": true, "code": "pickpickteam", "scope": "pickpickteam","table": "question","lower_bound": "5", "limit": 8}',
       actionsEnu:
@@ -483,6 +543,25 @@ export default {
     console.log(tp);
   },
   methods: {
+    addAccountByPhoneOrEmail() {
+      var params = {
+        blockChainId: +this.accountBlockChainId,
+        toRegister:
+          $('input:radio[name="register"]:checked').val() === "register"
+            ? true
+            : false,
+        type: $('input:radio[name="addType"]:checked').val()
+      };
+
+      if ($('input:radio[name="addType"]:checked').val() === "email") {
+        params.email = this.mailOrPhone;
+      } else {
+        params.phone = this.mailOrPhone;
+        params.phoneCode = this.areaCode;
+      }
+
+      tp.addAccountByPhoneOrEmail(params);
+    },
     importWallet(type) {
       tp.importWallet(type);
     },
@@ -678,6 +757,26 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    signCosmosTransaction() {
+      var params = JSON.parse(this.cosmosParams);
+      tp.signCosmosTransaction(params).then(res => {
+        $(".signCosmosTransactionLog").append(JSON.stringify(res));
+      });
+    },
+
+    cosmosArbitrarySignature() {
+      let pubkey = this.cosmosAddress;
+      let data = this.cosmosParams;
+      tp.cosmosArbitrarySignature(pubkey, data).then(res => {
+        $(".cosmosArbitrarySignatureLog").append(JSON.stringify(res));
+      });
+    },
+    signJingtumTransaction() {
+      var params = JSON.parse(this.jingtumParams);
+      tp.signJingtumTransaction(params).then(res => {
+        $(".signJingtumTransactionLog").append(JSON.stringify(res));
+      });
     },
     rollHorizontal(isTrue) {
       var params = { horizontal: isTrue };
