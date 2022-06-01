@@ -3,6 +3,29 @@
     <h1>tp-js-sdk-demo v2</h1>
 
     <div class="item">
+      <h3>1.21 tp.isDarkMode</h3>
+      <div class="demo-content">
+        <button @click="isDarkMode">isDarkMode</button>
+        <div class="isDarkModeLog"></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>1.20 addDAppToDiscover</h3>
+      <div class="demo-content">
+        <textarea
+          style="width: 100%"
+          id="add-dapp"
+          col="30"
+          rows="8"
+          v-model="dappParams"
+        ></textarea>
+
+        <button @click="addDapp()">addDapp</button>
+      </div>
+    </div>
+
+    <div class="item">
       <h3>0. tp.isConnected</h3>
       <div class="demo-content">
         <button @click="isConnected">isConnected</button>
@@ -57,7 +80,13 @@
     <div class="item">
       <h3>1.7 tp.getWallets</h3>
       <div class="demo-content">
-        <textarea style="width:100%" id="push-actions" col="30" rows="2" v-model="getWalletsParams"></textarea>
+        <textarea
+          style="width: 100%"
+          id="push-actions"
+          col="30"
+          rows="2"
+          v-model="getWalletsParams"
+        ></textarea>
         <br />
         <button @click="getWallets">getWallets</button>
         <div class="getWalletsLog"></div>
@@ -66,7 +95,13 @@
     <div class="item">
       <h3>1.8 tp.sign</h3>
       <div class="demo-content">
-        <textarea style="width:100%" id="push-actions" col="30" rows="2" v-model="appidParams"></textarea>
+        <textarea
+          style="width: 100%"
+          id="push-actions"
+          col="30"
+          rows="2"
+          v-model="appidParams"
+        ></textarea>
         <br />
         <button @click="sign">sign</button>
         <div class="signLog"></div>
@@ -76,7 +111,7 @@
       <h3>1.9 tp.eosAuthSign</h3>
       <div class="demo-content">
         <textarea
-          style="width:100%"
+          style="width: 100%"
           id="push-actions"
           col="30"
           rows="2"
@@ -237,7 +272,7 @@
       <div class="demo-content">
         Change the 'from' and 'to' fields into your custom account at least.
         <textarea
-          style="width:100%"
+          style="width: 100%"
           id="push-actions"
           col="30"
           rows="10"
@@ -251,7 +286,13 @@
     <div class="item">
       <h3>2.3 tp.getTableRows</h3>
       <div class="demo-content">
-        <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="eosTableRows"></textarea>
+        <textarea
+          style="width: 100%"
+          id="push-actions"
+          col="30"
+          rows="5"
+          v-model="eosTableRows"
+        ></textarea>
         <br />
         <button @click="getTableRows">getTableRows</button>
         <div class="getTableRowsLog"></div>
@@ -269,14 +310,16 @@
       <h3>2.5 tp.getEosTransactionRecord</h3>
       <div class="demo-content">
         <textarea
-          style="width:100%"
+          style="width: 100%"
           id="push-actions"
           col="30"
           rows="5"
           v-model="eosTransactionParams"
         ></textarea>
         <br />
-        <button @click="getEosTransactionRecord">getEosTransactionRecord</button>
+        <button @click="getEosTransactionRecord">
+          getEosTransactionRecord
+        </button>
         <div class="getEosTransactionRecordLog"></div>
       </div>
     </div>
@@ -391,7 +434,7 @@
       <div class="demo-content">
         Change the 'from' and 'to' fields into your custom account at least.
         <textarea
-          style="width:100%"
+          style="width: 100%"
           id="push-actions"
           col="30"
           rows="10"
@@ -405,7 +448,13 @@
     <div class="item">
       <h3>4.3 tp.getEnuTableRows</h3>
       <div class="demo-content">
-        <textarea style="width:100%" id="push-actions" col="30" rows="5" v-model="enuTableRows"></textarea>
+        <textarea
+          style="width: 100%"
+          id="push-actions"
+          col="30"
+          rows="5"
+          v-model="enuTableRows"
+        ></textarea>
         <br />
         <button @click="getEnuTableRows">getEnuTableRows</button>
         <div class="getEnuTableRowsLog"></div>
@@ -423,14 +472,16 @@
       <h3>4.5 tp.getEnuTransactionRecord</h3>
       <div class="demo-content">
         <textarea
-          style="width:100%"
+          style="width: 100%"
           id="push-actions"
           col="30"
           rows="5"
           v-model="enuTransactionParams"
         ></textarea>
         <br />
-        <button @click="getEnuTransactionRecord">getEnuTransactionRecord</button>
+        <button @click="getEnuTransactionRecord">
+          getEnuTransactionRecord
+        </button>
         <div class="getEnuTransactionRecordLog"></div>
       </div>
     </div>
@@ -444,7 +495,13 @@
     <div class="item">
       <h3>5.1 tp.signCosmosTransaction</h3>
       <div class="demo-content">
-        <textarea style="width:100%" id="cosmos-actions" col="30" rows="5" v-model="cosmosParams"></textarea>
+        <textarea
+          style="width: 100%"
+          id="cosmos-actions"
+          col="30"
+          rows="5"
+          v-model="cosmosParams"
+        ></textarea>
         <br />
         <button @click="signCosmosTransaction">signCosmosTransaction</button>
         <div class="signCosmosTransactionLog"></div>
@@ -455,9 +512,17 @@
       <div class="demo-content">
         cosmos 账号：
         <input type="text" v-model="cosmosAddress" />
-        <textarea style="width:100%" id="cosmos-actions" col="30" rows="5" v-model="cosmosParams"></textarea>
+        <textarea
+          style="width: 100%"
+          id="cosmos-actions"
+          col="30"
+          rows="5"
+          v-model="cosmosParams"
+        ></textarea>
         <br />
-        <button @click="cosmosArbitrarySignature">cosmosArbitrarySignature</button>
+        <button @click="cosmosArbitrarySignature">
+          cosmosArbitrarySignature
+        </button>
         <div class="cosmosArbitrarySignatureLog"></div>
       </div>
     </div>
@@ -465,19 +530,23 @@
     <div class="item">
       <h3>9.1 tp.signJingtumTransaction</h3>
       <div class="demo-content">
-        <textarea style="width:100%" id="jingtum-tx" col="30" rows="5" v-model="jingtumParams"></textarea>
+        <textarea
+          style="width: 100%"
+          id="jingtum-tx"
+          col="30"
+          rows="5"
+          v-model="jingtumParams"
+        ></textarea>
         <br />
         <button @click="signJingtumTransaction">signJingtumTransaction</button>
         <div class="signJingtumTransactionLog"></div>
       </div>
     </div>
-
-    <div></div>
   </div>
 </template>
 
 <script>
-import tp from "tp-js-sdk";
+import tp from "../../tp-js-sdk-dev/tp-js-sdk/index";
 import $ from "jquery";
 
 export default {
@@ -535,7 +604,9 @@ export default {
       enuTableRows:
         '{"json": true, "code": "pickpickteam", "scope": "pickpickteam","table": "question","lower_bound": "5", "limit": 8}',
       actionsEnu:
-        '{"actions":[{"account":"enu.token","name":"transfer","authorization":[{"actor":"accommodated","permission":"active"}],"data":{"from":"accommodated","to":"accommodated","quantity":"0.0001 ENU","memo":"test sdk"}},{"account":"enumivo","name":"delegatebw","authorization":[{"actor":"accommodated","permission":"active"}],"data":{"from":"accommodated","receiver":"accommodated","stake_net_quantity":"0.0100 ENU","stake_cpu_quantity":"0.0100 ENU","transfer":0}}], "account": "accommodated", "address": "ENU58Y6KWWVTa3nGVgPmAWyxAXJoyy7kkKjbStPW5C63QJdYJ1TtP"}'
+        '{"actions":[{"account":"enu.token","name":"transfer","authorization":[{"actor":"accommodated","permission":"active"}],"data":{"from":"accommodated","to":"accommodated","quantity":"0.0001 ENU","memo":"test sdk"}},{"account":"enumivo","name":"delegatebw","authorization":[{"actor":"accommodated","permission":"active"}],"data":{"from":"accommodated","receiver":"accommodated","stake_net_quantity":"0.0100 ENU","stake_cpu_quantity":"0.0100 ENU","transfer":0}}], "account": "accommodated", "address": "ENU58Y6KWWVTa3nGVgPmAWyxAXJoyy7kkKjbStPW5C63QJdYJ1TtP"}',
+      dappParams:
+        '{"title":"Transit Swap","icon_url":"https://tp-statics.tokenpocket.pro/dapp/tokenpocket-1635253854433.png","url":"https://swap.transit.finance/","version":1,"chain_list":[{"ns":"ethereum","chain_id":1},{"ns":"ethereum","chain_id":56},{"ns":"polkadot","genesis_hash":"0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe"},{"ns":"SOL"},{"ns":"TRX"}],"desc":"A multichain dex aggregator","full_screen":0,"hori_vert":0,"title_color":"0xffffff","navi_color":"0x2890fe"}',
     };
   },
   created() {
@@ -543,6 +614,15 @@ export default {
     console.log(tp);
   },
   methods: {
+    isDarkMode() {
+      tp.isDarkMode().then((res) => {
+        $(".isDarkModeLog").append(JSON.stringify(res));
+      });
+    },
+    addDapp() {
+      var params = JSON.parse(this.dappParams);
+      tp.addDAppToDiscover(params);
+    },
     addAccountByPhoneOrEmail() {
       var params = {
         blockChainId: +this.accountBlockChainId,
@@ -550,7 +630,7 @@ export default {
           $('input:radio[name="register"]:checked').val() === "register"
             ? true
             : false,
-        type: $('input:radio[name="addType"]:checked').val()
+        type: $('input:radio[name="addType"]:checked').val(),
       };
 
       if ($('input:radio[name="addType"]:checked').val() === "email") {
@@ -569,17 +649,17 @@ export default {
       $(".isConnectedLog").append("" + tp.isConnected());
     },
     getAppInfo() {
-      tp.getAppInfo().then(data => {
+      tp.getAppInfo().then((data) => {
         $(".getAppInfoLog").append(JSON.stringify(data));
       });
     },
     getWalletList(params) {
-      tp.getWalletList(params).then(data => {
+      tp.getWalletList(params).then((data) => {
         $(".getWalletListLog").append(JSON.stringify(data));
       });
     },
     getDeviceId() {
-      tp.getDeviceId().then(data => {
+      tp.getDeviceId().then((data) => {
         $(".getDeviceIdLog").append(JSON.stringify(data));
       });
     },
@@ -587,7 +667,7 @@ export default {
       var params = JSON.parse(this.getWalletsParams);
       $(".getWalletsLog").append(JSON.stringify(params));
 
-      tp.getWallets(params).then(data => {
+      tp.getWallets(params).then((data) => {
         $(".getWalletsLog").append(JSON.stringify(data));
       });
     },
@@ -596,25 +676,25 @@ export default {
         title: "TokenPocket",
         desc: "Your Universal Wallet",
         url: "https://www.mytokenpocket.vip/",
-        previewImage: ""
-      }).then(data => {
+        previewImage: "",
+      }).then((data) => {
         $(".shareNewsToSNSLog").append(JSON.stringify(data));
       });
     },
     invokeQRScanner() {
-      tp.invokeQRScanner().then(data => {
+      tp.invokeQRScanner().then((data) => {
         $(".invokeQRScannerLog").append(JSON.stringify(data));
       });
     },
     getCurrentWallet() {
-      tp.getCurrentWallet().then(data => {
+      tp.getCurrentWallet().then((data) => {
         $(".getCurrentWalletLog").append(JSON.stringify(data));
       });
     },
     sign() {
       var params = JSON.parse(this.appidParams);
       $(".signLog").append(JSON.stringify(params));
-      tp.sign(params).then(data => {
+      tp.sign(params).then((data) => {
         $(".signLog").append(JSON.stringify(data));
       });
     },
@@ -633,7 +713,7 @@ export default {
     eosAuthSign() {
       var params = JSON.parse(this.eosAuthSignParams);
       $(".eosAuthSignLog").append(JSON.stringify(params));
-      tp.eosAuthSign(params).then(data => {
+      tp.eosAuthSign(params).then((data) => {
         $(".eosAuthSignLog").append(JSON.stringify(data));
       });
     },
@@ -646,10 +726,10 @@ export default {
         precision: this.precisionEos,
         memo: this.memoEos,
         tokenName: this.tokenNameEos,
-        address: this.addressEos
+        address: this.addressEos,
       };
       $(".eosTokenTransferLog").append(JSON.stringify(params));
-      tp.eosTokenTransfer(params).then(data => {
+      tp.eosTokenTransfer(params).then((data) => {
         $(".eosTokenTransferLog").append(JSON.stringify(data));
       });
     },
@@ -657,7 +737,7 @@ export default {
       try {
         var params = JSON.parse(this.actionsEos);
 
-        tp.pushEosAction(params).then(data => {
+        tp.pushEosAction(params).then((data) => {
           $(".pushEosActionLog").append(JSON.stringify(data));
         });
       } catch (e) {
@@ -668,7 +748,7 @@ export default {
       try {
         var params = JSON.parse(this.eosTableRows);
 
-        tp.getTableRows(params).then(data => {
+        tp.getTableRows(params).then((data) => {
           $(".getTableRowsLog").append(JSON.stringify(data));
         });
       } catch (e) {
@@ -679,7 +759,7 @@ export default {
       try {
         var params = JSON.parse(this.eosTransactionParams);
 
-        tp.getEosTransactionRecord(params).then(data => {
+        tp.getEosTransactionRecord(params).then((data) => {
           $(".getEosTransactionRecordLog").append(JSON.stringify(data));
         });
       } catch (e) {
@@ -691,19 +771,19 @@ export default {
       var params = {
         account: "itokenpocket",
         contract: "eosadddddddd",
-        symbol: "AD"
+        symbol: "AD",
       };
       $(".getEosBalanceLog").append(JSON.stringify(params));
-      tp.getEosBalance(params).then(data => {
+      tp.getEosBalance(params).then((data) => {
         $(".getEosBalanceLog").append(JSON.stringify(data));
       });
     },
     getEosAccountInfo() {
       var params = {
-        account: "itokenpocket"
+        account: "itokenpocket",
       };
       $(".getEosAccountInfoLog").append(JSON.stringify(params));
-      tp.getEosAccountInfo(params).then(data => {
+      tp.getEosAccountInfo(params).then((data) => {
         $(".getEosAccountInfoLog").append(JSON.stringify(data));
       });
     },
@@ -718,10 +798,10 @@ export default {
         precision: this.precisionEnu,
         memo: this.memoEnu,
         tokenName: this.tokenNameEnu,
-        address: this.addressEnu
+        address: this.addressEnu,
       };
       $(".enuTokenTransferLog").append(JSON.stringify(params));
-      tp.enuTokenTransfer(params).then(data => {
+      tp.enuTokenTransfer(params).then((data) => {
         $(".enuTokenTransferLog").append(JSON.stringify(data));
       });
     },
@@ -729,7 +809,7 @@ export default {
       try {
         var params = JSON.parse(this.actionsEnu);
 
-        tp.pushEnuAction(params).then(data => {
+        tp.pushEnuAction(params).then((data) => {
           $(".pushEnuActionLog").append(JSON.stringify(data));
         });
       } catch (e) {
@@ -740,7 +820,7 @@ export default {
       try {
         var params = JSON.parse(this.enuTableRows);
 
-        tp.getEnuTableRows(params).then(data => {
+        tp.getEnuTableRows(params).then((data) => {
           $(".getEnuTableRowsLog").append(JSON.stringify(data));
         });
       } catch (e) {
@@ -751,7 +831,7 @@ export default {
       try {
         var params = JSON.parse(this.enuTransactionParams);
 
-        tp.getEnuTransactionRecord(params).then(data => {
+        tp.getEnuTransactionRecord(params).then((data) => {
           $(".getEnuTransactionRecordLog").append(JSON.stringify(data));
         });
       } catch (e) {
@@ -760,7 +840,7 @@ export default {
     },
     signCosmosTransaction() {
       var params = JSON.parse(this.cosmosParams);
-      tp.signCosmosTransaction(params).then(res => {
+      tp.signCosmosTransaction(params).then((res) => {
         $(".signCosmosTransactionLog").append(JSON.stringify(res));
       });
     },
@@ -768,13 +848,13 @@ export default {
     cosmosArbitrarySignature() {
       let pubkey = this.cosmosAddress;
       let data = this.cosmosParams;
-      tp.cosmosArbitrarySignature(pubkey, data).then(res => {
+      tp.cosmosArbitrarySignature(pubkey, data).then((res) => {
         $(".cosmosArbitrarySignatureLog").append(JSON.stringify(res));
       });
     },
     signJingtumTransaction() {
       var params = JSON.parse(this.jingtumParams);
-      tp.signJingtumTransaction(params).then(res => {
+      tp.signJingtumTransaction(params).then((res) => {
         $(".signJingtumTransactionLog").append(JSON.stringify(res));
       });
     },
@@ -791,19 +871,19 @@ export default {
       var params = {
         account: "accommodated",
         contract: "ltsonenumivo",
-        symbol: "LTS"
+        symbol: "LTS",
       };
       $(".getEnuBalanceLog").append(JSON.stringify(params));
-      tp.getEnuBalance(params).then(data => {
+      tp.getEnuBalance(params).then((data) => {
         $(".getEnuBalanceLog").append(JSON.stringify(data));
       });
     },
     getEnuAccountInfo() {
       var params = {
-        account: "accommodated"
+        account: "accommodated",
       };
       $(".getEnuAccountInfoLog").append(JSON.stringify(params));
-      tp.getEnuAccountInfo(params).then(data => {
+      tp.getEnuAccountInfo(params).then((data) => {
         $(".getEnuAccountInfoLog").append(JSON.stringify(data));
       });
     },
@@ -817,10 +897,10 @@ export default {
         contract: this.contractMoac,
         decimal: this.decimalMoac,
         gasLimit: this.gasLimitMoac,
-        tokenName: this.tokenNameMoac
+        tokenName: this.tokenNameMoac,
       };
       $(".moacTokenTransferLog").append(JSON.stringify(params));
-      tp.moacTokenTransfer(params).then(data => {
+      tp.moacTokenTransfer(params).then((data) => {
         $(".moacTokenTransferLog").append(JSON.stringify(data));
       });
     },
@@ -834,7 +914,7 @@ export default {
       var params = {
         blockChainId: this.chatblockChainId,
         account: this.chataccount,
-        sessionType: this.chatsessionType
+        sessionType: this.chatsessionType,
       };
 
       tp.startChat(params);
@@ -850,11 +930,10 @@ export default {
         via: "",
         shardingFlag: 0,
         decimal: 18,
-        data:
-          "0x02ef9b6b000000000000000000000000000000000000000000000000000000000000004a000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010040004000200004002000800008010000000000000000000000000000000000"
+        data: "0x02ef9b6b000000000000000000000000000000000000000000000000000000000000004a000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010040004000200004002000800008010000000000000000000000000000000000",
       };
       $(".pushMoacTransactionLog").append(JSON.stringify(params));
-      tp.pushMoacTransaction(params).then(data => {
+      tp.pushMoacTransaction(params).then((data) => {
         $(".pushMoacTransactionLog").append(JSON.stringify(data));
       });
     },
@@ -866,18 +945,17 @@ export default {
         gasLimit: 170000,
         gasPrice: 20000000000,
         type: "eth",
-        data:
-          "0x02ef9b6b000000000000000000000000000000000000000000000000000000000000004a000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010040004000200004002000800008010000000000000000000000000000000000"
-      }).then(data => {
+        data: "0x02ef9b6b000000000000000000000000000000000000000000000000000000000000004a000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010040004000200004002000800008010000000000000000000000000000000000",
+      }).then((data) => {
         $(".makeTransactionLog").append(JSON.stringify(data));
       });
     },
     signTransaction() {
-      tp.signTransaction().then(data => {
+      tp.signTransaction().then((data) => {
         $(".signTransactionLog").append(JSON.stringify(data));
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
