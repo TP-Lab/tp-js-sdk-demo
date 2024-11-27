@@ -39,16 +39,7 @@
         <div class="getAppInfoLog"></div>
       </div>
     </div>
-    <div class="item">
-      <h3>1.2 tp.getWalletList</h3>
-      <div class="demo-content">
-        <button @click="getWalletList('eth')">getWalletList(eth)</button>
-        <button @click="getWalletList('moac')">getWalletList(moac)</button>
-        <button @click="getWalletList('eos')">getWalletList(eos)</button>
-        <button @click="getWalletList('enu')">getWalletList(enu)</button>
-        <div class="getWalletListLog"></div>
-      </div>
-    </div>
+
     <div class="item">
       <h3>1.3 tp.getDeviceId</h3>
       <div class="demo-content">
@@ -78,18 +69,15 @@
       </div>
     </div>
     <div class="item">
-      <h3>1.7 tp.getWallets</h3>
+      <h3>1.7 tp.getWallet</h3>
       <div class="demo-content">
-        <textarea
-          style="width: 100%"
-          id="push-actions"
-          col="30"
-          rows="2"
-          v-model="getWalletsParams"
-        ></textarea>
-        <br />
-        <button @click="getWallets">getWallets</button>
-        <div class="getWalletsLog"></div>
+        ns:<input type="text" v-model="ns" /><br />
+        chainId: <input type="text" v-model="chainId" /><br />
+
+        ns2:<input type="text" v-model="ns2" /><br />
+        chainId2: <input type="text" v-model="chainId2" /><br />
+        <button @click="getWallet()">getWallet</button>
+        <div class="getWalletLog"></div>
       </div>
     </div>
     <div class="item">
@@ -143,11 +131,10 @@
     </div>
     <div>
       <h3>1.13 tp.importWallet</h3>
+      ns:<input type="text" v-model="ns3" /><br />
+      chainId: <input type="text" v-model="chainId3" /><br />
       <div class="demo-content">
-        <button @click="importWallet('eos')">import EOS wallet</button>
-        <button @click="importWallet('eth')">import ETH wallet</button>
-        <button @click="importWallet('enu')">import ENU wallet</button>
-        <button @click="importWallet('moac')">import MOAC wallet</button>
+        <button @click="importWallet()">import wallet</button>
       </div>
     </div>
     <div>
@@ -205,6 +192,16 @@
         <button @click="forwardNavigationGesturesEnable(true)">true</button>
         <br />
         <button @click="forwardNavigationGesturesEnable(false)">false</button>
+      </div>
+    </div>
+
+    <div>
+      <h3>1.19 tp.getNodeUrl</h3>
+      <div class="demo-content">
+        ns:<input type="text" v-model="ns4" /><br />
+        chainId: <input type="text" v-model="chainId4" /><br />
+        <button @click="getNodeUrl()">getNodeUrl</button>
+        <div class="getNodeUrlLog"></div>
       </div>
     </div>
 
@@ -542,17 +539,41 @@
         <div class="signJingtumTransactionLog"></div>
       </div>
     </div>
+
+    <div class="item">
+      <h3>14.1 tp.getCurrentBalance (BTC/DOGE/...)</h3>
+      <button @click="getCurrentBalance">getCurrentBalance</button>
+      <div class="getCurrentBalanceLog"></div>
+    </div>
+
+    <div class="item">
+      <h3>14.2 tp.btcTokenTransfer</h3>
+      To:<input type="text" v-model="btcTo" /><br />
+      Amount: <input type="text" v-model="btcAmount" /> <br />
+      Memo(optional):
+      <input type="text" v-model="btcMemo" /><br />
+      <button @click="btcTokenTransfer">btcTokenTransfer</button>
+      <div class="btcTokenTransferLog"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import tp from "../../tp-js-sdk-dev/tp-js-sdk/index";
+import tp from "tp-js-sdk";
 import $ from "jquery";
 
 export default {
   name: "HelloWorld",
   data() {
     return {
+      ns: "ethereum",
+      chainId: "1",
+      ns2: "ethereum",
+      chainId2: "56",
+      ns3: "ethereum",
+      chainId3: "1",
+      ns4: "ethereum",
+      chainId4: "1",
       fromEos: "",
       toEos: "",
       amountEos: "",
@@ -579,6 +600,9 @@ export default {
       chataccount: "",
       chatsessionType: "1",
       gasLimitMoac: "21000",
+      btcTo: "",
+      btcAmount: "",
+      btcMemo: "",
       accountBlockChainId: "4",
       mailOrPhone: "",
       areaCode: "",
@@ -642,8 +666,12 @@ export default {
 
       tp.addAccountByPhoneOrEmail(params);
     },
-    importWallet(type) {
-      tp.importWallet(type);
+    importWallet() {
+      let params = {
+        ns: this.ns3,
+        chainId: this.chainId3,
+      };
+      tp.importWallet(params);
     },
     isConnected() {
       $(".isConnectedLog").append("" + tp.isConnected());
@@ -663,12 +691,36 @@ export default {
         $(".getDeviceIdLog").append(JSON.stringify(data));
       });
     },
-    getWallets() {
-      var params = JSON.parse(this.getWalletsParams);
-      $(".getWalletsLog").append(JSON.stringify(params));
+    getWallet() {
+      let ns = this.ns;
+      let chainId = this.chainId;
+      let ns2 = this.ns2;
+      let chainId2 = this.chainId2;
+      let walletTypes = [{ ns, chainId }];
 
-      tp.getWallets(params).then((data) => {
-        $(".getWalletsLog").append(JSON.stringify(data));
+      if (ns2 && chainId2) {
+        walletTypes.push({
+          ns: ns2,
+          chainId: chainId2,
+        });
+      }
+
+      var params = {
+        walletTypes,
+        switch: true,
+      };
+
+      tp.getWallet(params).then((data) => {
+        $(".getWalletLog").append(JSON.stringify(data));
+      });
+    },
+    getNodeUrl() {
+      let params = {
+        ns: this.ns4,
+        chainId: this.chainId4,
+      };
+      tp.getNodeUrl(params).then((data) => {
+        $(".getNodeUrlLog").append(JSON.stringify(data));
       });
     },
     shareNewsToSNS() {
@@ -676,7 +728,7 @@ export default {
         title: "TokenPocket",
         desc: "Your Universal Wallet",
         url: "https://www.mytokenpocket.vip/",
-        previewImage: "",
+        previewImage: "https://tp-statics.tokenpocket.pro/logo/tokenpocket.png",
       }).then((data) => {
         $(".shareNewsToSNSLog").append(JSON.stringify(data));
       });
@@ -767,6 +819,31 @@ export default {
       }
     },
 
+    getCurrentBalance() {
+      tp.getCurrentBalance().then((data) => {
+        $(".getCurrentBalanceLog").append(JSON.stringify(data));
+      });
+    },
+
+    btcTokenTransfer() {
+      tp.getCurrentWallet().then((res) => {
+        let from = res.data.address;
+        let to = this.btcTo;
+        let amount = this.btcAmount;
+        let op_return = this.btcMemo;
+
+        if (from && to && amount) {
+          tp.btcTokenTransfer({
+            from,
+            to,
+            amount,
+            op_return,
+          }).then((res) => {
+            $(".btcTokenTransferLog").append(JSON.stringify(res));
+          });
+        }
+      });
+    },
     getEosBalance() {
       var params = {
         account: "itokenpocket",
